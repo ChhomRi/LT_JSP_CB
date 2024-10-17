@@ -4,7 +4,6 @@
  */
 package my.common;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -15,20 +14,15 @@ import java.sql.DriverManager;
 public class DatabaseUtil {
     public static Connection getConnection(){
         Connection conn = null;
-        
-        try{
+        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://databaseName=qlts", "sa", "sa");
-            
-        }catch(Exception e){
-            System.out.println("Loi:" + e.toString());
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=qlts","sa","sa");
+        } catch (Exception e) {
+            System.out.println("Loi: " + e.toString());
         }
         return conn;
     }
     public static void main(String[] args) {
         System.out.println(DatabaseUtil.getConnection());
     }
-    
-    
 }
-
